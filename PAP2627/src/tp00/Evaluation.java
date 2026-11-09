@@ -11,11 +11,23 @@ public class Evaluation {
 	 * @param note doit être entre 0 et 100
 	 * @return la décision
 	 */
-	public static String calculDecision(int note) {
+	public static String calculDecision(Integer note) {
 		assert note >= 0 && note <= 100 : "La note doit être entre 0 et 100";
-		String decision = "Refus";
-
+		String decision = switch (note) {
+		case Integer a when a < 30 -> "Refus";
+		case Integer a when a < 50 -> "Ajourné";
+		default -> "Réussite";
+		};
 		return decision;
+	}
+
+	String doubleToRating(Double rating) {
+		return switch (rating) {
+		case Double d when d == 0 -> "0 stars";
+		case Double d when d > 0d && d < 2.5d -> d + " is not good";
+		case Double d when d >= 2.5f && d < 5d -> d + " is better";
+		default -> "Invalid rating";
+		};
 	}
 
 	/**

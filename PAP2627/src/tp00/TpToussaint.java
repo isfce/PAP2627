@@ -5,8 +5,21 @@ import java.util.Scanner;
 public class TpToussaint {
 
 	public static int compareDate(int j1, int m1, int a1, int j2, int m2, int a2) {
+		assert 0 < j1 && j1 <= 31 && 0 < m1 && m1 <= 12 : "Date 1 non valide";
+		assert 0 < j2 && j2 <= 31 && 0 < m2 && m2 <= 12 : "Date 2 non valide";
 		int result = 0;
-
+		if (a1 < a2)
+			result = -1;
+		else if (a1 > a2)
+			result = 1;
+		else if (m1 < m2)
+			result = -1;
+		else if (m1 > m2)
+			result = 1;
+		else if (j1 < j2)
+			result = -1;
+		else if (j1 > j2)
+			result = 1;
 		return result;
 	}
 
