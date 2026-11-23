@@ -1,3 +1,6 @@
+import math
+
+
 def estPair(nbr):
     return True
 
@@ -40,5 +43,31 @@ def fibo(n):
     return f1    
 
 
+def nombreOr(eps:float) -> int:
+    ''' nombre d'itérations pour obtenir la précision epsilon du nombre d'or
+        à partir de Fibonacci'''
+    assert eps > 0 , " eps doit être >0 "
+    
+    eps = abs(eps)  # sécurité au cas où assert par activé
+    phi = (1.0 + math.sqrt(5)) / 2.0
+    f0, f1 = 1, 1
+    n = 1
+    while abs(phi - f1 / f0) > eps:
+        f0, f1 = f1, f0 + f1
+        n = n + 1
+    return n
+
+
+def estPremier(n:int) -> bool:
+    assert n >= 2, ' n doit être >=2'
+    premier = n == 2 or n % 2 != 0
+    d = 3
+    while premier and d * d <= n:
+        premier = n % d != 0
+        d = d + 2
+    return premier
+
+
 if __name__ == "__main__":
-    print(fact(100))
+    print(nombreOr(0.001))
+    

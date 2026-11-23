@@ -27,6 +27,21 @@ class TestMyMath(unittest.TestCase):
         self.assertEqual(8, my_math.fibo(6))
         self.assertRaises(AssertionError, my_math.fibo, -1)     
 
-              
+    def test_nombreOr(self):
+        self.assertEqual(1, my_math.nombreOr(0.7))
+        self.assertEqual(9, my_math.nombreOr(0.001))
+        self.assertRaises(AssertionError, my_math.nombreOr,0)
+    
+    def test_estPremier(self):
+        self.assertTrue(my_math.estPremier(2))
+        self.assertTrue(my_math.estPremier(3))
+        self.assertTrue(my_math.estPremier(5))
+        self.assertTrue(my_math.estPremier(7))
+        self.assertTrue(my_math.estPremier(11))
+                
+        self.assertFalse(my_math.estPremier(4))
+        self.assertFalse(my_math.estPremier(9))
+        self.assertRaises(AssertionError, my_math.estPremier,0)
+        
 if __name__ == "__main__":
     unittest.main()
